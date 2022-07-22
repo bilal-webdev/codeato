@@ -1,0 +1,48 @@
+.courses .card{
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    width: 30% !important;
+    /* margin: 0 20px 20px 0; */
+}
+
+.card .card-img-top{
+    height: 14rem;
+}
+
+.courses .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body .name{
+    font-weight: 700;
+}
+
+.courses .courses-body{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* background-color: rgb(177, 76, 76); */
+}
+
+@media (max-width: 420px) {
+    .courses > h1 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+
+    .courses-body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .courses-body .card{
+        margin: 15px auto;
+        width: 90% !important;
+    }
+    
+}

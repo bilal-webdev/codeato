@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codeato</title>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <link
+    rel="https://cdn.rawgit.com/mfd/7c7a915eb31474cc8c6a65066a4c4dc3/raw/f0f2fb94c21dea904812a53e0eb6cf0bc87f3754/GTWalsheimPro.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+  <style>
+    .nav-temp {
+      /* background-color: rgba(255, 176, 29, 0.925); */
+      background-color: #06c5f0;
+      font-family: 'Nunito', sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <section class="">
+
+    <!-- Navigation -->
+
+    <nav class="nav-temp pt-3 navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <% if(loggedIn) { %>
+          <a class="navbar-brand" style="font-weight: bold;" href="/courses">Codeato</a>
+        <% }else{ %> 
+          <a class="navbar-brand" style="font-weight: bold;" href="/">Codeato</a>
+        <% } %>
+
+        <!-- for mobile view -->
+        <% if(loggedIn) {%>
+          <div class="dropdown show mobile">
+            <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <img class="rounded-circle"
+                style="border-radius: 5px; background-position: center; background-size: cover; "
+                src="/images/<%= user.avatar %>" height="40" width="40" alt="">
+            </a>
+  
+            <div class="dropdown-menu mobiledp" aria-labelledby="dropdownMenuLink">
+              <img class="rounded-circle"
+                style="border-radius: 5px; background-position: center; background-size: cover; margin-left: 58px;"
+                src="/images/<%= user.avatar %>" height="45" width="45" alt="">
+              <a class="dropdown-item text-primary text-center" href="/profile">@<%= user.username %></a>
+              <hr>
+              <a class="dropdown-item" href="/myclass">My Classes</a>
+              <a class="dropdown-item" href="/reset">Reset Password</a>
+              <a class="dropdown-item" href="/logout">Log Out</a>
+            </div>
+          </div>
+          <% } %>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+          <% if(loggedIn) {%>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/courses">Courses <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/review">Review Forum<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <% } %>
+
+          <div class="my-2 my-lg-0">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+              <% if(loggedIn) {%>
+              <div class="dropdown show">
+                <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  <img class="rounded-circle"
+                    style="border-radius: 5px; background-position: center; background-size: cover; "
+                    src="/images/<%= user.avatar %>" height="40" width="40" alt="">
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <img class="rounded-circle"
+                    style="border-radius: 5px; background-position: center; background-size: cover; margin-left: 58px;"
+                    src="/images/<%= user.avatar %>" height="45" width="45" alt="">
+                  <a class="dropdown-item text-primary text-center" href="/profile">@<%= user.username %></a>
+                  <hr>
+                  <a class="dropdown-item" href="/myclass">My Classes</a>
+                  <a class="dropdown-item" href="/reset">Reset Password</a>
+                  <a class="dropdown-item" href="/logout">Log Out</a>
+                </div>
+              </div>
+              <% } %>
+
+
+              <% if( loggedIn === 'false' || extra === 'true' ) {%>
+              <button type="button" data-toggle="modal" data-target="#modalLoginForm"
+                class="btn btn-outline-light px-3">Sign In</button>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+    </nav>
+  </section>

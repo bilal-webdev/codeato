@@ -1,0 +1,161 @@
+<%- include('../partials/navigation.ejs')%>
+
+<link rel="stylesheet" href="/stylesheets/editprofile.css">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets">
+  <div class="row">
+    <div class="mx-auto col-xs-12 col-sm-9">
+      <br>
+      <h1 class="theme-color-dark">Edit user details...</h1>
+      <div class="panel panel-default">
+        <div class="card">
+          <div class="card-body">
+            <div class="e-profile">
+              <div class="row">
+                <div class="col-12 col-sm-auto mb-3">
+                  <div class="mx-auto" style="width: 140px;">
+                    <div class="d-flex justify-content-center align-items-center rounded"
+                      style="height: 140px; background-color: rgb(233, 236, 239);">
+                      <img height="140" width="140"
+                        style="border-radius: 5px; background-position: center; background-size: cover;"
+                        src="/images/<%= user.avatar %>" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                  <div class="text-center text-sm-left mb-2 mb-sm-0">
+                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                      <% if(user.name) { %>
+                      <%= user.name %>
+                      <% } else { %>
+                      John Doe <small class="text-muted">(dummy name)</small>
+                      <% } %>
+                    </h4>
+                    <p class="mb-0">@<%= user.username %></p>
+                    <br>
+
+
+                    <form action="/uploading/<%= user._id %>" class="d-none" method="POST"
+                      enctype="multipart/form-data">
+                      <input type="file" name="avatar">
+                      <input type="hidden" name="oldavatar" value="<%= user.avatar %>">
+                      <input type="submit">
+                    </form>
+
+                    <div class="mt-2">
+                      <button class="btn theme-bgcolor text-white" id="uploadFile" type="button">
+                        <i class="fa fa-fw fa-camera"></i>
+                        <span>Change Photo</span>
+                      </button>
+                    </div>
+
+
+                  </div>
+                  <div class="text-center text-sm-right">
+                    <span class="badge theme-bgcolor text-white">Posts <%= user.posts.length %>
+                    </span>
+                    <div class="text-muted"><small>
+                        Joined
+                        <% if(user.createdAt.getDate() < 10 ) { %>
+                        0<%= user.createdAt.getDate() %>
+                        <% } else { %>
+                        <%= user.createdAt.getDate() %>
+                        <% } %>
+                        <%= user.createdAt.toLocaleString('default', {month: 'short'}) %>
+                        <%= user.createdAt.getFullYear() %>,
+                        <%= user.createdAt.toLocaleTimeString() %>
+                      </small></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <form class="form-horizontal" action="/updated/<%= user.username %>" method="POST">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">Profile details...</h4>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="col-sm-10">
+                <input title="username" type="text" readonly class="form-control" name="username"
+                  value="<%= user.username %>">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10">
+                <input title="full name" type="text" class="form-control" name="name" value="<%= user.name %>"
+                  placeholder="John Doe">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10">
+                <input title="email" type="email" class="form-control" name="email" value="<%= user.email %>">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10">
+                <input title="enter breif location" type="text" class="form-control" name="address"
+                  value="<%= user.address %>" placeholder="Address">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10">
+                <input type="tel" title="phone number" class="form-control" name="contact" value="<%= user.contact %>"
+                  placeholder="+91 123 234 4568">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10">
+                <textarea title="your bio..." rows="3" class="form-control" name="about"
+                  placeholder="about you.."><%= user.about %></textarea>
+              </div>
+            </div>
+            <din class="form-group">
+              <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" value="male"
+                    <%= (user.gender === 'male' ? 'checked' : '') %>>
+                  <label class="form-check-label" for="inlineRadio1">male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" value="female"
+                    <%= (user.gender === 'female' ? 'checked' : '') %>>
+                  <label class="form-check-label" for="inlineRadio2">female</label>
+                </div>
+              </div>
+            </din>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-2 my">
+                <button type="submit" class=" text-white btn theme-bgcolor">Submit</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br> <br>
+
+<%- include('../partials/footer.ejs')%>
+
+<script>
+  document.querySelector('#uploadFile').addEventListener('click', () => {
+    document.querySelector('input[type="file"]').click();
+  });
+
+  document.querySelector('input[type="file"]').addEventListener('change', () => {
+    document.querySelector('input[type="submit"]').click();
+  });
+</script>

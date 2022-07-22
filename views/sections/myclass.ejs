@@ -1,0 +1,55 @@
+<% if(loggedIn) {%>
+<%- include('../partials/navigation.ejs')%>
+<% } %>
+
+<link rel="stylesheet" href="/stylesheets/course.css">
+
+
+<br>
+<section class="courses container">
+
+  <h1 class="theme-color-dark">Courses you have Subscribed</h1>
+  <div class="courses-body">
+
+    <% courses.course.forEach( list => { %>
+    <div class="card" style="width: 18rem;">
+      <img src="/assets/adminCourse/<%= list.pic %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text text-center"><%= list.desc %></p>
+        <p class="name text-center"><%= list.title %></p>
+
+          <!-- <a class="btn btn-outline-warning px-3" href="/userSubscribe/<%# list._id %>">Subscribe Now</a> -->
+          <!-- <h4 class="text-center">✔&emsp;✖</h4> -->
+        
+      </div>
+    </div>
+    <% }) %>
+
+    <!-- <div class="card" style="width: 18rem;">
+      <img src="./assets/psAiXd.PNG" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text text-center">Some quick example text to build on the card title </p>
+        <p class="name text-center">Illustration</p>
+        <h4 class="text-center">✔&emsp;✖</h4>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="./assets/MobileApp.PNG" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text text-center">Some quick example text to build on the card title </p>
+        <p class="name text-center">Mobile UI</p>
+        <h4 class="text-center">✔&emsp;✖</h4>
+      </div>
+    </div> -->
+
+  </div>
+
+</section>
+
+
+<br> <br>
+
+<% if(loggedIn) {%>
+<%- include('../partials/footer.ejs')%>
+<% } %>

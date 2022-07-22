@@ -1,0 +1,44 @@
+<%- include('../partials/navigation.ejs')%>
+
+<br> <br>
+
+<link rel="stylesheet" href="/stylesheets/sign.css">
+
+<div class="sign-width">
+    <h3 class="text-center font-weight-bold theme-color-dark">Start your journey with Codeato</h3>
+    <br>
+    <div class="text-center px-5">
+    <!-- <button type="button"  onclick='window.location.href="/googlelogin"' class="reg-button d-flex btn btn-block">
+     <img height="20" src="https://cdn.aircomechanical.com/wp-content/uploads/2018/12/google-review-button.png" alt="">
+     <span>Sign Up with Google</span>
+   </button> -->
+   <!-- <hr> -->
+     <form action="/register" method="POST">
+       <!-- <div class="form-row"> -->
+         <div class="form-group ">
+           <input type="text" class="form-control" id="inputfirst" name="username" placeholder="Username">
+         </div>
+         <!-- <div class="form-group col-md-6">
+           <input type="text" class="form-control" id="inputLasr" placeholder="Doe">
+         </div> -->
+       <!-- </div> -->
+       <div class="form-group">
+         <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email Id">
+       </div>
+       <div class="form-group">
+         <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+       </div>
+       <button type="submit" class="btn btn-block font-weight-bolder px20 theme-bgcolor">Sign Up</button>
+     </form>
+     <br>
+   <p">Already a member? <a href="/signin">Sign In</a>.</p>
+   <hr>
+   <small class=" d-block px-3 text-center">By signing up you agree to Codeato's Terms of Service and Privacy Policy.</small>
+     </div>
+  
+  </div>
+  
+  <br> <br>
+
+
+<%- include('../partials/footer.ejs')%>

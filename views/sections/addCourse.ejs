@@ -1,0 +1,72 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeato</title>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
+    <link
+        rel="https://cdn.rawgit.com/mfd/7c7a915eb31474cc8c6a65066a4c4dc3/raw/f0f2fb94c21dea904812a53e0eb6cf0bc87f3754/GTWalsheimPro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/stylesheets/adminCourse.css">
+    <style>
+        .nav-temp {
+            /* background-color: rgba(255, 176, 29, 0.925); */
+            background-color: #06c5f0;
+            font-family: 'Nunito', sans-serif;
+        }
+    </style>
+
+</head>
+
+<div id="nav" style="background-color: transparent;">
+    <h3 class="text-center theme-color-dark font-weight-bold" style="margin-top: 5px;">Add New Course</h3>
+    
+    <a class="float-right btn btn-outline-primary px-3" href="/logout">Log Out</a>
+  </div>
+
+<section class="courses container">
+    <div class="courses-body " id="area">
+        <div class="card mx-auto" style="width: 18rem; ">
+            <img src="/assets/adminCourse/<%= data.pic %>" class="card-img-top" alt="...">
+
+            <form action="/courseImg/<%= data._id %>" class="d-none" method="POST" enctype="multipart/form-data">
+                <input type="file" name="pic">
+                <input type="hidden" name="oldpic" value="<%= data.pic %>">
+                <input type="submit">
+            </form>
+            <button class="btn theme-bgcolor text-white" id="uploadFile" type="button">
+                <i class="fa fa-fw fa-camera"></i>
+                <span>Change Photo</span>
+            </button>
+
+
+            <form action="/createCourse/<%= data._id %>" method="POST">
+                <div class="card-body">
+                    <input type="text" id="desc" name="desc" value="<%= data.desc %>" placeholder="Course Description"><br>
+                    <input type="text" id="coursename" name="title" value="<%= data.title %>" placeholder="Course Name"><br>
+                    <button type="submit" id="add" class="btn btn-outline-primary px-3">Add Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    document.querySelector('#uploadFile').addEventListener('click', () => {
+      document.querySelector('input[type="file"]').click();
+    });
+  
+    document.querySelector('input[type="file"]').addEventListener('change', () => {
+      document.querySelector('input[type="submit"]').click();
+    });
+  </script>
+  
